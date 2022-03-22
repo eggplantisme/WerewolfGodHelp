@@ -75,7 +75,7 @@ python WerewolfGodHelp.py
 
   **记录：**【在界面女巫是否使用解药根据情况勾选；是否使用毒药根据情况勾选，如勾选使用毒药，选择施毒目标的编号】
 
-  ![witch](D:\Code\_Interesting\WerewolfGodHelp\img\witch.PNG)
+  ![witch](./img/witch.PNG)
 
 - **话术：**守卫请睁眼，守卫请选择今晚守护的目标，守卫请闭眼。
 
@@ -85,13 +85,13 @@ python WerewolfGodHelp.py
 
   **记录：**【当猎人可以开枪时，在界面猎人开枪目标后选择目标编号】
 
-  ![hunter](D:\Code\_Interesting\WerewolfGodHelp\img\hunter.PNG)
+  ![hunter](./img/hunter.PNG)
 
 - **话术：**黑狼王请睁眼，【点击黑狼王技能状态后的更新状态，根据后面勾选情况，确定黑狼王能否扑咬】，今晚你的扑咬状态是这个【能扑咬，拇指向上；不能扑咬，手臂胸前交叉】，你扑咬的目标是，黑狼王请闭眼。
 
   **记录：**【当黑狼王可以扑咬时，在界面黑狼王带走目标后选择目标编号】
 
-  ![black](D:\Code\_Interesting\WerewolfGodHelp\img\black.PNG)
+  ![black](./img/black.PNG)
 
   天亮了。【点击界面 天亮了按钮，界面转换为白天】
 
