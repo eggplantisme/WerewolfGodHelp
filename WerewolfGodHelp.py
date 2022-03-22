@@ -52,9 +52,9 @@ def nightSummary(app, ui, game):
     game.shot.append(shot)
     game.blackKill.append(blackKill)
     game.whiteKill.append(0)
-    if look == game.whiteWolfKing['id']:
+    if look == game.whiteWolfKing['id'] and game.evilKnight['canRebound'] == True:
         game.evilKill.append(game.predictor['id'])
-    elif poison == game.whiteWolfKing['id']:
+    elif poison == game.whiteWolfKing['id'] and game.evilKnight['canRebound'] == True:
         game.evilKill.append(game.witch['id'])
     else:
         game.evilKill.append(0)

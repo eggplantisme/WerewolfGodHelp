@@ -27,7 +27,7 @@ class Game:
         self.wolf = []  # [{'id': int, 'isLive': True/False}]
         self.blackWolfKing = dict({'id': 0, 'name': '黑狼王', 'isLive': True, 'canKill': False})
         self.whiteWolfKing = dict({'id': 0, 'name': '白狼王', 'isLive': True})
-        self.evilKnight = dict({'id': 0, 'name': '恶灵骑士', 'isLive': True})
+        self.evilKnight = dict({'id': 0, 'name': '恶灵骑士', 'isLive': True, 'canRebound': True})
         # good guy
         self.predictor = dict({'id': 0, 'name': '预言家', 'isLive': True})
         self.witch = dict({'id': 0, 'name': '女巫', 'isLive': True, 'save': 1, 'poison': 1})
@@ -65,8 +65,13 @@ class Game:
         flow = "*******记录*******\n"
         if self.kill[-1] != 0:
             flow += "*今晚狼刀了" + str(self.player[self.kill[-1]]['id']) + "号(" + self.player[self.kill[-1]]['name'] + ')\n'
+        else:
+            flow += "*今晚狼没刀"
+        
         if self.look[-1] != 0:
             flow += "*今晚预言家查验了" + str(self.player[self.look[-1]]['id']) + "号(" + self.player[self.look[-1]]['name'] + ')\n'
+        else:
+            flow += "*今晚预言家没有查验\n"
 
         if self.save[-1] is True:
             flow += "*今晚女巫" + "使用了" + "解药\n"
@@ -81,6 +86,8 @@ class Game:
         
         if self.protect[-1] != 0:
             flow += "*今晚守卫守护了" + str(self.player[self.protect[-1]]['id']) + "号(" + self.player[self.protect[-1]]['name'] + ')\n'
+        else:
+            flow += "*今晚守卫没有守人\n"
 
         if self.hunter['canShot'] is True:
             flow += "*今晚猎人可以开枪,"
@@ -106,17 +113,18 @@ class Game:
             dead_id.append(self.shot[-1])
         if self.save[-1] is not True and self.protect[-1] != self.kill[-1]:
             dead_id.append(self.kill[-1])
+        if self.save[-1] is True and self.protect[-1] == self.kill[-1]:
+            dead_id.append(self.kill[-1])
         if self.blackKill[-1] is not 0:
             dead_id.append(self.blackKill[-1])
-        if self.look[-1] == self.evilKnight['id']:
-            dead_id.append(self.predictor['id'])
         if self.poison[-1] is not 0:
-            if self.poison[-1] == self.evilKnight['id'] and self.look[-1] == self.evilKnight['id']:
+            if self.poison[-1] == self.evilKnight['id'] and self.evilKnight['canRebound'] is True:
                 pass
-            elif self.poison[-1] == self.evilKnight['id'] and self.look[-1] != self.evilKnight['id']:
-                dead_id.append(self.witch['id'])
             else:
                 dead_id.append(self.poison[-1])
+        if self.evilKill[-1] is not 0:
+            self.evilKnight['canRebound'] = False
+            dead_id.append(self.evilKnight[-1])
         # 更新死亡信息
         dead_id = set(dead_id)
         for id in dead_id:
