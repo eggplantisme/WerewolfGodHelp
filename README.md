@@ -48,7 +48,7 @@ python WerewolfGodHelp.py
 
 #### 界面
 
-![window](D:\Code\_Interesting\WerewolfGodHelp\img\window.PNG)
+![window](.\img\window.PNG)
 
 #### 夜晚流程
 
